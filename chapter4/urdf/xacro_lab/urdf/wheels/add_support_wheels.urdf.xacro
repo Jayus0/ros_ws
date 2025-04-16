@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<robot name="add_support_wheels" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!--导入配置-->
+    <xacro:include filename="$(find xacro_lab)/urdf/props/config.urdf.xacro" />
+    <!--支撑轮属性-->
+    <xacro:property name="support_wheel_radius" value="0.0075"> <!--支撑轮半径-->
+
+    <!--支撑轮宏-->
+    <xacro:macro name="add_support_wheel_radius" param="name flag">
+        <link name="${name}_wheel">
+            <visual>
+                <geometry>
+                    <sphere radius="${support_wheel_radius}" />
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <xacro:black />
+            </visual>
+        </link>
+
+        <joint name="${name}_wheel2base_link" type="continuous">
+            <parent link="base_link" />
+            <child link="${name}_wheel" />
+            <origin xyz="${flag * (base_link_radius - support_wheel_radius)} 0 ${-(base_link_length / 2 + earth_space / 2)}" />
+            <axis xyz="1 1 1" /> 
+        </joint>
+    </xacro:macro >
+</robot>

@@ -1,0 +1,7 @@
+<library path="lib/libmulti_nav">
+    <class name="multi_nav_plugin/MultiNavPlugin"
+           type="multi_nav_plugin::MultiNavPlugin"
+           base_class_type="rviz::Panel">
+        <description>A panel widget allowing multi-goals navigation.</description>
+    </class>
+</library>

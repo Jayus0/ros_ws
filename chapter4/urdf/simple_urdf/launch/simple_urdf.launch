@@ -1,0 +1,12 @@
+<launch>
+    <!--机器人描述文件-->
+    <param name="robot_description" textfile="$(find simple_urdf)/urdf/simple.urdf" />
+
+    <!-- 发布机器人状态 -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <!-- 启动Rviz仿真 -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find simple_urdf)/rviz/simple_urdf.rviz"/>
+
+</launch>

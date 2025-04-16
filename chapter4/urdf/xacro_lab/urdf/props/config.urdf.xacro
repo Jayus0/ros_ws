@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!-- 常规配置 -->
+<robot name="config" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- 圆周率 -->
+    <xacro:property name="PI" value="3.1415926" />
+
+    <!-- 底盘属性 -->
+    <xacro:property name="base_footprint_radius" value="0.001" />
+    <xacro:property name="base_link_radius" value="0.1" />
+    <xacro:property name="base_link_length" value="0.0.08" />
+    <xacro:property name="earth_space" value="0.0.015" />
+
+    <!-- 颜色宏 -->
+    <xacro:macro name="black">
+        <material name="black">
+            <color rgba="0 0 0 1" />
+        </material>
+    </xacro:macro>
+    <xacro:macro name="yellow">
+        <material name="yellow">
+            <color rgba="1.0 1.0 0.0 1.0" />
+        </material>
+    </xacro:macro>
+</robot>

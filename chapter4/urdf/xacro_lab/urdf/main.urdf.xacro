@@ -1,0 +1,17 @@
+<!-- 根标签，必须声明 xmlns:xacro -->
+<robot name="main" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- 底盘 -->
+    <xacro:include filename="$(find xacro_lab)/urdf/base/base.urdf.xacro" />
+    <!-- 添加驱动轮 -->
+    <xacro:include filename="$(find xacro_lab)/urdf/wheels/add_drive_wheels.urdf.xacro" />
+    <!-- 添加从动轮 -->
+    <xacro:include filename="$(find xacro_lab)/urdf/wheels/add_support_wheels.urdf.xacro" />
+
+    <!-- 主体 -->
+    <xacro:add_drive_wheels name="left" flag="1" />
+    <xacro:add_drive_wheels name="right" flag="-1" />
+
+    <xacro:add_support_wheel name="front" flag="1" />
+    <xacro:add_support_wheel name="back" flag="-1" />
+
+</robot>

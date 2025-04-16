@@ -1,0 +1,13 @@
+<launch>
+    <node pkg="handle_control" type="handle_control_node" name="handle_control" output="screen">
+        <param name="twist_topic_name" value="/cmd_vel" />
+        <param name="axis_linear" value="1" />
+        <param name="axis_angular" value="0" />
+        <param name="button_linear_accel" value="0" />
+        <param name="button_linear_decel" value="1" />
+        <param name="button_angular_accel" value="2" />
+        <param name="button_angular_decel" value="3" />
+    </node>
+
+    <node pkg = "joy" type="joy_node" name="joy_node" output="screen" />
+</launch>

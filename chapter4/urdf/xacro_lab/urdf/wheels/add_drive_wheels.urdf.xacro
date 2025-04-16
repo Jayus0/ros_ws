@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!--添加驱动轮-->
+<robot name="add_drive_wheels" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!--导入配置-->
+    <xacro:include filename="$(find xacro_lab)/urdf/props/config.urdf.xacro" />
+    <!--驱动轮属性-->
+    <xacro:property name="wheel_radius" value="0.0325" />   <!--半径-->
+    <xacro:property name="wheel_length" value="0.015" />    <!--宽度-->
+
+    <!--驱动轮宏实现-->
+    <xacro:macro name="add_drive_wheels" param="name flag">
+        <link name="${name}_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}" />
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="${PI / 2} 0.0 0.0" />
+                <xacro:black />
+            </visual>
+        </link>
+
+    <joint name="${name}_wheel2base_link" type="continous">
+        <parent link="base_link" />
+        <child link="${name}_wheel" />
+        <origin xyz="0 ${flag * base_link_radius} ${-(earth_space + base_link_length) / 2 - wheel_radius}" />
+        <axis xyz="0 1 1" />
+    </joint>
+    </xacro:macro>
+</robot>

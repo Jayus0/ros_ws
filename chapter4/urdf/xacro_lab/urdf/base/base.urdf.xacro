@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!-- 底座 -->
+<robot name="base" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- 导入配置 -->
+    <xacro:include filename="$(find xaclro_lab)/urdf/props/config.urdf.xacro" />
+
+    <link name="base_footprint">
+        <visual>
+            <geometry>
+                <sphere radius="${base_footprint_radius}" />
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="${base_link_radius}" length="${base_link_length}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <xacro:yellow />
+        </visual>
+    </link>
+
+    <joint name="base_link2base_footprint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 ${earth_space +base_link_length / 2 }" />
+    </joint>
+
+</robot>
